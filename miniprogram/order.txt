@@ -1,0 +1,547 @@
+query storebyid($id: ID) {
+    storebyid: store_by_id(id: $id) {
+        address
+        updatedAt
+        telephone
+        name
+        describle
+        createdAt
+        admin_id {
+            id
+            openid
+            username
+            password
+            telephone
+            email
+            createdAt
+            updatedAt
+        }
+        id
+        class
+        recommended
+        img
+    }
+}
+
+query userbyid($id: ID) {
+    userbyid: user_by_id(id: $id) {
+        id
+        openid
+        username
+        password
+        telephone
+        email
+        createdAt
+        updatedAt
+    }
+}
+
+query adminbyid($id: ID) {
+    adminbyid: admin_by_id(id: $id) {
+        id
+        openid
+        username
+        password
+        telephone
+        email
+        createdAt
+        updatedAt
+    }
+}
+
+query storebyprops($address: String, $updatedAt: String, $telephone: String, $name: String, $describle: String, $createdAt: String, $admin_id: ID, $class: String, $recommended: String, $img: String) {
+    storebyprops: store_by_props(address: $address updatedAt: $updatedAt telephone: $telephone name: $name describle: $describle createdAt: $createdAt admin_id: $admin_id class: $class recommended: $recommended img: $img) {
+        address
+        updatedAt
+        telephone
+        name
+        describle
+        createdAt
+        admin_id {
+            id
+            openid
+            username
+            password
+            telephone
+            email
+            createdAt
+            updatedAt
+        }
+        id
+        class
+        recommended
+        img
+    }
+}
+
+query adminbyprops($openid: String, $username: String, $password: String, $telephone: String, $email: String, $createdAt: String, $updatedAt: String) {
+    adminbyprops: admin_by_props(openid: $openid username: $username password: $password telephone: $telephone email: $email createdAt: $createdAt updatedAt: $updatedAt) {
+        id
+        openid
+        username
+        password
+        telephone
+        email
+        createdAt
+        updatedAt
+    }
+}
+
+query servicebyid($id: ID) {
+    servicebyid: service_by_id(id: $id) {
+        updatedAt
+        orderPrice
+        number
+        timeRange
+        name
+        describle
+        createdAt
+        evaluation
+        id
+        class
+        serverStatus
+        price
+        store_id {
+            address
+            updatedAt
+            telephone
+            name
+            describle
+            createdAt
+
+            id
+            class
+            recommended
+            img
+        }
+        img
+    }
+}
+
+query repertorybyid($id: ID) {
+    repertorybyid: repertory_by_id(id: $id) {
+        id
+        service_id {
+            updatedAt
+            orderPrice
+            number
+            timeRange
+            name
+            describle
+            createdAt
+            evaluation
+            id
+            class
+            serverStatus
+            price
+
+            img
+        }
+        name
+        count
+    }
+}
+
+query orderbyid($id: ID) {
+    orderbyid: order_by_id(id: $id) {
+        remark
+        server_id
+        updatedAt
+        payTime
+        orderTotalPay
+        createdAt
+        orderStatus
+        id
+        user_id {
+            id
+            openid
+            username
+            password
+            telephone
+            email
+            createdAt
+            updatedAt
+        }
+        orderTime
+        storeTotalPay
+    }
+}
+
+query repertorybyprops($service_id: ID, $name: String, $count: Int) {
+    repertorybyprops: repertory_by_props(service_id: $service_id name: $name count: $count) {
+        id
+        service_id {
+            updatedAt
+            orderPrice
+            number
+            timeRange
+            name
+            describle
+            createdAt
+            evaluation
+            id
+            class
+            serverStatus
+            price
+
+            img
+        }
+        name
+        count
+    }
+}
+
+query servicebyprops($updatedAt: String, $orderPrice: Float, $number: Int, $name: String, $describle: String, $createdAt: String, $evaluation: String, $class: String, $serverStatus: String, $price: Float, $store_id: ID, $img: String) {
+    servicebyprops: service_by_props(updatedAt: $updatedAt orderPrice: $orderPrice number: $number name: $name describle: $describle createdAt: $createdAt evaluation: $evaluation class: $class serverStatus: $serverStatus price: $price store_id: $store_id img: $img) {
+        updatedAt
+        orderPrice
+        number
+        timeRange
+        name
+        describle
+        createdAt
+        evaluation
+        id
+        class
+        serverStatus
+        price
+        store_id {
+            address
+            updatedAt
+            telephone
+            name
+            describle
+            createdAt
+
+            id
+            class
+            recommended
+            img
+        }
+        img
+    }
+}
+
+query userbyprops($openid: String, $username: String, $password: String, $telephone: String, $email: String, $createdAt: String, $updatedAt: String) {
+    userbyprops: user_by_props(openid: $openid username: $username password: $password telephone: $telephone email: $email createdAt: $createdAt updatedAt: $updatedAt) {
+        id
+        openid
+        username
+        password
+        telephone
+        email
+        createdAt
+        updatedAt
+    }
+}
+
+query orderbyprops($remark: String, $server_id: String, $updatedAt: String, $payTime: String, $orderTotalPay: Float, $createdAt: String, $orderStatus: String, $user_id: ID, $orderTime: String, $storeTotalPay: Float) {
+    orderbyprops: order_by_props(remark: $remark server_id: $server_id updatedAt: $updatedAt payTime: $payTime orderTotalPay: $orderTotalPay createdAt: $createdAt orderStatus: $orderStatus user_id: $user_id orderTime: $orderTime storeTotalPay: $storeTotalPay) {
+        remark
+        server_id
+        updatedAt
+        payTime
+        orderTotalPay
+        createdAt
+        orderStatus
+        id
+        user_id {
+            id
+            openid
+            username
+            password
+            telephone
+            email
+            createdAt
+            updatedAt
+        }
+        orderTime
+        storeTotalPay
+    }
+}
+
+mutation createuser($id: ID!, $openid: String, $username: String, $password: String, $telephone: String, $email: String, $createdAt: String, $updatedAt: String) {
+    createuser: create_user(id: $id openid: $openid username: $username password: $password telephone: $telephone email: $email createdAt: $createdAt updatedAt: $updatedAt) {
+        id
+        openid
+        username
+        password
+        telephone
+        email
+        createdAt
+        updatedAt
+    }
+}
+
+mutation deletestore($address: String, $updatedAt: String, $telephone: String, $name: String, $describle: String, $createdAt: String, $admin_id: ID, $id: ID, $class: String, $recommended: String, $img: String) {
+    deletestore: delete_store(address: $address updatedAt: $updatedAt telephone: $telephone name: $name describle: $describle createdAt: $createdAt admin_id: $admin_id id: $id class: $class recommended: $recommended img: $img)
+}
+
+mutation updateuser($id: ID, $openid: String, $username: String, $password: String, $telephone: String, $email: String, $createdAt: String, $updatedAt: String) {
+    updateuser: update_user(id: $id openid: $openid username: $username password: $password telephone: $telephone email: $email createdAt: $createdAt updatedAt: $updatedAt) {
+        id
+        openid
+        username
+        password
+        telephone
+        email
+        createdAt
+        updatedAt
+    }
+}
+
+mutation createstore($address: String, $updatedAt: String, $telephone: String, $name: String, $describle: String, $createdAt: String, $admin_id: ID, $id: ID!, $class: String, $recommended: String, $img: String) {
+    createstore: create_store(address: $address updatedAt: $updatedAt telephone: $telephone name: $name describle: $describle createdAt: $createdAt admin_id: $admin_id id: $id class: $class recommended: $recommended img: $img) {
+        address
+        updatedAt
+        telephone
+        name
+        describle
+        createdAt
+        admin_id {
+            id
+            openid
+            username
+            password
+            telephone
+            email
+            createdAt
+            updatedAt
+        }
+        id
+        class
+        recommended
+        img
+    }
+}
+
+mutation updateservice($updatedAt: String, $orderPrice: Float, $number: Int, $timeRange: String, $name: String, $describle: String, $createdAt: String, $evaluation: String, $id: ID, $class: String, $serverStatus: String, $price: Float, $store_id: ID, $img: String) {
+    updateservice: update_service(updatedAt: $updatedAt orderPrice: $orderPrice number: $number timeRange: $timeRange name: $name describle: $describle createdAt: $createdAt evaluation: $evaluation id: $id class: $class serverStatus: $serverStatus price: $price store_id: $store_id img: $img) {
+        updatedAt
+        orderPrice
+        number
+        timeRange
+        name
+        describle
+        createdAt
+        evaluation
+        id
+        class
+        serverStatus
+        price
+        store_id {
+            address
+            updatedAt
+            telephone
+            name
+            describle
+            createdAt
+
+            id
+            class
+            recommended
+            img
+        }
+        img
+    }
+}
+
+mutation createservice($updatedAt: String, $orderPrice: Float, $number: Int, $timeRange: String, $name: String, $describle: String, $createdAt: String, $evaluation: String, $id: ID!, $class: String, $serverStatus: String, $price: Float, $store_id: ID, $img: String) {
+    createservice: create_service(updatedAt: $updatedAt orderPrice: $orderPrice number: $number timeRange: $timeRange name: $name describle: $describle createdAt: $createdAt evaluation: $evaluation id: $id class: $class serverStatus: $serverStatus price: $price store_id: $store_id img: $img) {
+        updatedAt
+        orderPrice
+        number
+        timeRange
+        name
+        describle
+        createdAt
+        evaluation
+        id
+        class
+        serverStatus
+        price
+        store_id {
+            address
+            updatedAt
+            telephone
+            name
+            describle
+            createdAt
+
+            id
+            class
+            recommended
+            img
+        }
+        img
+    }
+}
+
+mutation updateadmin($id: ID, $openid: String, $username: String, $password: String, $telephone: String, $email: String, $createdAt: String, $updatedAt: String) {
+    updateadmin: update_admin(id: $id openid: $openid username: $username password: $password telephone: $telephone email: $email createdAt: $createdAt updatedAt: $updatedAt) {
+        id
+        openid
+        username
+        password
+        telephone
+        email
+        createdAt
+        updatedAt
+    }
+}
+
+mutation updatestore($address: String, $updatedAt: String, $telephone: String, $name: String, $describle: String, $createdAt: String, $admin_id: ID, $id: ID, $class: String, $recommended: String, $img: String) {
+    updatestore: update_store(address: $address updatedAt: $updatedAt telephone: $telephone name: $name describle: $describle createdAt: $createdAt admin_id: $admin_id id: $id class: $class recommended: $recommended img: $img) {
+        address
+        updatedAt
+        telephone
+        name
+        describle
+        createdAt
+        admin_id {
+            id
+            openid
+            username
+            password
+            telephone
+            email
+            createdAt
+            updatedAt
+        }
+        id
+        class
+        recommended
+        img
+    }
+}
+
+mutation createrepertory($id: ID!, $service_id: ID, $name: String, $count: Int) {
+    createrepertory: create_repertory(id: $id service_id: $service_id name: $name count: $count) {
+        id
+        service_id {
+            updatedAt
+            orderPrice
+            number
+            timeRange
+            name
+            describle
+            createdAt
+            evaluation
+            id
+            class
+            serverStatus
+            price
+
+            img
+        }
+        name
+        count
+    }
+}
+
+mutation deleteorder($remark: String, $server_id: String, $updatedAt: String, $payTime: String, $orderTotalPay: Float, $createdAt: String, $orderStatus: String, $id: ID, $user_id: ID, $orderTime: String, $storeTotalPay: Float) {
+    deleteorder: delete_order(remark: $remark server_id: $server_id updatedAt: $updatedAt payTime: $payTime orderTotalPay: $orderTotalPay createdAt: $createdAt orderStatus: $orderStatus id: $id user_id: $user_id orderTime: $orderTime storeTotalPay: $storeTotalPay)
+}
+
+mutation deleteadmin($id: ID, $openid: String, $username: String, $password: String, $telephone: String, $email: String, $createdAt: String, $updatedAt: String) {
+    deleteadmin: delete_admin(id: $id openid: $openid username: $username password: $password telephone: $telephone email: $email createdAt: $createdAt updatedAt: $updatedAt)
+}
+
+mutation deleteuser($id: ID, $openid: String, $username: String, $password: String, $telephone: String, $email: String, $createdAt: String, $updatedAt: String) {
+    deleteuser: delete_user(id: $id openid: $openid username: $username password: $password telephone: $telephone email: $email createdAt: $createdAt updatedAt: $updatedAt)
+}
+
+mutation createorder($remark: String, $server_id: String, $updatedAt: String, $payTime: String, $orderTotalPay: Float, $createdAt: String, $orderStatus: String, $id: ID!, $user_id: ID, $orderTime: String, $storeTotalPay: Float) {
+    createorder: create_order(remark: $remark server_id: $server_id updatedAt: $updatedAt payTime: $payTime orderTotalPay: $orderTotalPay createdAt: $createdAt orderStatus: $orderStatus id: $id user_id: $user_id orderTime: $orderTime storeTotalPay: $storeTotalPay) {
+        remark
+        server_id
+        updatedAt
+        payTime
+        orderTotalPay
+        createdAt
+        orderStatus
+        id
+        user_id {
+            id
+            openid
+            username
+            password
+            telephone
+            email
+            createdAt
+            updatedAt
+        }
+        orderTime
+        storeTotalPay
+    }
+}
+
+mutation deleterepertory($id: ID, $service_id: ID, $name: String, $count: Int) {
+    deleterepertory: delete_repertory(id: $id service_id: $service_id name: $name count: $count)
+}
+
+mutation updateorder($remark: String, $server_id: String, $updatedAt: String, $payTime: String, $orderTotalPay: Float, $createdAt: String, $orderStatus: String, $id: ID, $user_id: ID, $orderTime: String, $storeTotalPay: Float) {
+    updateorder: update_order(remark: $remark server_id: $server_id updatedAt: $updatedAt payTime: $payTime orderTotalPay: $orderTotalPay createdAt: $createdAt orderStatus: $orderStatus id: $id user_id: $user_id orderTime: $orderTime storeTotalPay: $storeTotalPay) {
+        remark
+        server_id
+        updatedAt
+        payTime
+        orderTotalPay
+        createdAt
+        orderStatus
+        id
+        user_id {
+            id
+            openid
+            username
+            password
+            telephone
+            email
+            createdAt
+            updatedAt
+        }
+        orderTime
+        storeTotalPay
+    }
+}
+
+mutation deleteservice($updatedAt: String, $orderPrice: Float, $number: Int, $name: String, $describle: String, $createdAt: String, $evaluation: String, $id: ID, $class: String, $serverStatus: String, $price: Float, $store_id: ID, $img: String) {
+    deleteservice: delete_service(updatedAt: $updatedAt orderPrice: $orderPrice number: $number name: $name describle: $describle createdAt: $createdAt evaluation: $evaluation id: $id class: $class serverStatus: $serverStatus price: $price store_id: $store_id img: $img)
+}
+
+mutation updaterepertory($id: ID, $service_id: ID, $name: String, $count: Int) {
+    updaterepertory: update_repertory(id: $id service_id: $service_id name: $name count: $count) {
+        id
+        service_id {
+            updatedAt
+            orderPrice
+            number
+            timeRange
+            name
+            describle
+            createdAt
+            evaluation
+            id
+            class
+            serverStatus
+            price
+
+            img
+        }
+        name
+        count
+    }
+}
+
+mutation createadmin($id: ID!, $openid: String, $username: String, $password: String, $telephone: String, $email: String, $createdAt: String, $updatedAt: String) {
+    createadmin: create_admin(id: $id openid: $openid username: $username password: $password telephone: $telephone email: $email createdAt: $createdAt updatedAt: $updatedAt) {
+        id
+        openid
+        username
+        password
+        telephone
+        email
+        createdAt
+        updatedAt
+    }
+}
