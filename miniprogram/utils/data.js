@@ -18,17 +18,22 @@ function getIndexNavData(){
             {
                 id:2,
                 icon:"../../images/nav_icon_02.png",
-                title:"理发"
+                title:"美甲"
             },
             {
                 id:3,
                 icon:"../../images/nav_icon_03.png",
-                title:"餐厅"
+                title:"美容"
             },
             {
                 id:4,
                 icon:"../../images/nav_icon_04.png",
-                title:"影院"
+                title:"美发"
+            },
+            {
+                id:5,
+                icon:"../../images/nav_icon_05.png",
+                title:"美睫"
             }
         ]
     return arr

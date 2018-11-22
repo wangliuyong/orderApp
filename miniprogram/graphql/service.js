@@ -1,5 +1,5 @@
-let createService=`mutation createservice($updatedAt: String, $orderPrice: Float, $number: Int, $timeRange: String, $name: String, $describle: String, $createdAt: String, $evaluation: String, $id: ID!, $class: String, $serverStatus: String, $price: Float, $store_id: ID, $img: String) {
-    createservice: create_service(updatedAt: $updatedAt orderPrice: $orderPrice number: $number timeRange: $timeRange name: $name describle: $describle createdAt: $createdAt evaluation: $evaluation id: $id class: $class serverStatus: $serverStatus price: $price store_id: $store_id img: $img) {
+let createService=`mutation createservice($updatedAt: String, $orderPrice: Float, $number: Int, $timeRange: String, $name: String, $describle: String, $createdAt: String, $evaluation: String, $id: ID!, $class: String, $serverStatus: String, $recommended: String, $price: Float, $store_id: ID, $img: String) {
+    createservice: create_service(updatedAt: $updatedAt orderPrice: $orderPrice number: $number timeRange: $timeRange name: $name describle: $describle createdAt: $createdAt evaluation: $evaluation id: $id class: $class serverStatus: $serverStatus recommended: $recommended price: $price store_id: $store_id img: $img) {
         updatedAt
         orderPrice
         number
@@ -11,6 +11,7 @@ let createService=`mutation createservice($updatedAt: String, $orderPrice: Float
         id
         class
         serverStatus
+        recommended
         price
         store_id {
             address
@@ -44,6 +45,7 @@ updateService=`mutation updateservice($updatedAt: String, $orderPrice: Float, $n
         id
         class
         serverStatus
+        recommended
         price
         store_id {
             address
@@ -61,8 +63,39 @@ updateService=`mutation updateservice($updatedAt: String, $orderPrice: Float, $n
         img
     }
 }`,
-getService=`query servicebyprops($updatedAt: String, $orderPrice: Float, $number: Int, $name: String, $describle: String, $createdAt: String, $evaluation: String, $class: String, $serverStatus: String, $price: Float, $store_id: ID, $img: String) {
-    servicebyprops: service_by_props(updatedAt: $updatedAt orderPrice: $orderPrice number: $number name: $name describle: $describle createdAt: $createdAt evaluation: $evaluation class: $class serverStatus: $serverStatus price: $price store_id: $store_id img: $img) {
+getService=`query servicebyprops($updatedAt: String, $orderPrice: Float, $number: Int, $name: String, $describle: String, $createdAt: String, $evaluation: String, $class: String, $serverStatus: String, $recommended: String, $price: Float, $store_id: ID, $img: String) {
+    servicebyprops: service_by_props(updatedAt: $updatedAt orderPrice: $orderPrice number: $number name: $name describle: $describle createdAt: $createdAt evaluation: $evaluation class: $class serverStatus: $serverStatus recommended: $recommended price: $price store_id: $store_id img: $img) {
+        updatedAt
+        orderPrice
+        number
+        timeRange
+        name
+        describle
+        createdAt
+        evaluation
+        id
+        class
+        serverStatus
+        recommended
+        price
+        store_id {
+            address
+            updatedAt
+            telephone
+            name
+            describle
+            createdAt
+
+            id
+            class
+            recommended
+            img
+        }
+        img
+    }
+}`,
+getServiceById=`query servicebyid($id: ID) {
+    servicebyid: service_by_id(id: $id) {
         updatedAt
         orderPrice
         number
@@ -75,6 +108,7 @@ getService=`query servicebyprops($updatedAt: String, $orderPrice: Float, $number
         class
         serverStatus
         price
+        recommended
         store_id {
             address
             updatedAt
@@ -97,5 +131,6 @@ export default{
     createService,
     deleteService,
     updateService,
-    getService
+    getService,
+    getServiceById
 }

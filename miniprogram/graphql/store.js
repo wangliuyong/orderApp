@@ -71,14 +71,38 @@ getStore=`query storebyprops($address: String, $updatedAt: String, $telephone: S
         class
         img
     }
-}`
-
-
+}`,
+getStoreById=`query storebyid($id: ID) {
+    storebyid: store_by_id(id: $id) {
+        address
+        updatedAt
+        telephone
+        name
+        describle
+        createdAt
+        admin_id {
+            id
+            openid
+            username
+            password
+            telephone
+            email
+            createdAt
+            updatedAt
+        }
+        id
+        class
+        recommended
+        img
+    }
+}
+`
 export default{
     createStore,
     deleteStore,
     updateStore,
-    getStore
+    getStore,
+    getStoreById
 }
 
 

@@ -2,16 +2,17 @@
   "pages":[
     "pages/index/index",
     "pages/detail/detail",
-    "pages/order/order",
-    "pages/server/server",
-    "pages/server_detail/server_detail",
+    "pages/details/details",
+    "pages/book/book",
+    "pages/technician/technician",
+    "pages/technicain_detail/technicain_detail",
     "pages/edit_addr/edit_addr",
     "pages/user/user"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#37383c",
-    "navigationBarTitleText": "微预约",
+    "navigationBarTitleText": "美容",
     "navigationBarTextStyle":"white"
   },
   "tabBar": {
@@ -25,8 +26,8 @@
       "iconPath":"images/index_icon.png",
       "selectedIconPath":"images/index_icon_HL.png"
     }, {
-      "pagePath": "pages/server/server",
-      "text": "服务",
+      "pagePath": "pages/technician/technician",
+      "text": "技师",
       "iconPath":"images/skill_icon.png",
       "selectedIconPath":"images/skill_icon_HL.png"
     }, {
@@ -35,7 +36,6 @@
       "iconPath":"images/user_icon.png",
       "selectedIconPath":"images/user_icon_HL.png"
     }
-    
     ]
   }
 }

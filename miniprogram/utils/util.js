@@ -29,12 +29,8 @@ function replacePhone(arr,isreplace){
   }
   
   return newAddr
-}//*********************************************** */
-function unduplicated(arr){
-  return Array.from(new Set(arr))
 }
 module.exports = {
   formatTime: formatTime,
-  replacePhone : replacePhone,
-  unduplicated:unduplicated
+  replacePhone : replacePhone
 }
