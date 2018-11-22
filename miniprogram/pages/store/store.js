@@ -29,6 +29,7 @@ Page({
       option:{},
       store:{},
       serviceList:[],
+      serviceLists:[],
       navList:[]
   },
    
@@ -37,43 +38,33 @@ Page({
     console.log(option)
     this.dealStore()
     this.dealService()
-  
-
   },
   //标签切换
   switchTab(e) {
       console.log(e.currentTarget.dataset.name) 
       let class1=e.currentTarget.dataset.name
-      let serviceList=this.data.serviceList.filter((item)=>{
-        return item.class==class1
-      })
-      console.log(serviceList)
+      if(class1=='推荐'){
+        let serviceLists=this.data.serviceLists.filter((item)=>{
+          console.log(item.class)
+          return item.recommended==1
+        })
 
-      this.setData({serviceList})
+        console.log(serviceLists)
+        this.setData({serviceList:serviceLists})
+      }else{
+        let serviceLists=this.data.serviceLists.filter((item)=>{
+          console.log(item.class)
+          return item.class==class1
+        })
+  
+        console.log(serviceLists)
+        this.setData({serviceList:serviceLists})
+      }
   },
   // 跳转至详情页
-  navigateDetail: function(e){
+  toServiceDetail(e){
     wx.navigateTo({
       url:'../detail/detail?artype=' + e.currentTarget.dataset.artype
-    })
-  },
-  // 加载更多
-  loadMore: function (e) {
-    console.log('加载更多')
-    var curid = this.data.curIndex
-
-    if (this.data.navSectionItems[curid].length === 0) return
-    
-    var that = this
-    that.data.navSectionItems[curid] = that.data.navSectionItems[curid].concat(that.data.navSectionItems[curid])
-    that.setData({
-      list: that.data.navSectionItems,
-    }) 
-  },
-  // book
-  bookTap: function(e){
-    wx.navigateTo({
-      url:'../book/book?aid='+e.currentTarget.dataset.aid
     })
   },
   //封装的函数
@@ -96,7 +87,7 @@ Page({
     let option=this.data.option,that=this
     this.getServices({store_id:option.store_id}).then((e)=>{
       console.log("getServices",e.data.servicebyprops)
-      that.setData({serviceList:e.data.servicebyprops})
+      that.setData({serviceList:e.data.servicebyprops,serviceLists:e.data.servicebyprops})
 
       let arr=e.data.servicebyprops.map(item=>item.class)
       arr=Array.from(new Set(arr))
@@ -131,6 +122,12 @@ Page({
           }
         }
       })
+
+      navList=[{
+        index:0,
+        icon:"../../images/nav_icon_01.png",
+        name:"推荐"
+      },...navList]
       this.setData({navList})
       console.log('navList',this.data.navList)
     })

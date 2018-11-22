@@ -17,7 +17,7 @@
   </view>
   <!--nav-->
   <view class="nav_top">
-    <block wx:for="{{navList}}" wx:key="index">
+    <block wx:for="{{navList}}" wx:key="item.id">
       <view class="nav_top_items"  bindtap="switchTab" data-name="{{item.name}}">
         <image src="{{item.icon}}" mode="aspectFill"></image>
         <text>{{item.name}}</text>
@@ -43,11 +43,15 @@
                     <view class="section_cont_sub">
                         <text>{{item.name}}</text>
                     </view>
-                    <view class="section_cont_price">价格：{{item.price}}</view>
+                    <view>{{item.class}}专家</view>
+                    <view >价格：{{item.price}}/次</view>
+                    <view class="section_cont_price">预约价格：{{item.orderPrice}}/次</view>
                     <view>{{item.describle}}</view>
+                    <view>状态:{{item.serverStatus==1?"可预约":"不可预约"}}</view>
+                    <view>评价:{{item.evaluation}}</view>
+                    
                 </view>
                 <!--book-->
-
                 <view class="section_book" bindtap="toServiceDetail" data-id="{{item.id}}">
                         <text>预约</text>
                 </view>

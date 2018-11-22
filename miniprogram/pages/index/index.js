@@ -39,7 +39,7 @@ Page({
   toDetail(e){
     console.log(e)
     wx.navigateTo({
-      url:'../details/details?store_id='+e.currentTarget.dataset.id
+      url:'../store/store?store_id='+e.currentTarget.dataset.id
     })
   },
   // 加载更多
