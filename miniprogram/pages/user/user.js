@@ -19,7 +19,25 @@ Page({
   },
   onLoad(){
     this.getWeixinUser()
-
+    this.dealOrder()
+  },
+  //封装的函数
+  deleteOrders(data){
+    let mutation=deleteOrder
+    return mutations({data,mutation}).then((e)=>{
+      return e
+      console.log('deleteOrders',e)
+    })
+  },
+  cancel(e){
+    let that=this
+    console.log(e.target.dataset.id)
+    let data={
+      id:e.target.dataset.id
+    }
+    this.deleteOrders(data).then(e=>that.dealOrder()) 
+  },
+  dealOrder(){
     let data={
       user_id:app.globalData.openid
     }
@@ -32,7 +50,6 @@ Page({
       })
     })
   },
-  //封装的函数
   getOrders(data){
     let query=getOrder
     console.log('-----------1-----------')

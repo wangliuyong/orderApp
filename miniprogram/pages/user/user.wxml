@@ -10,11 +10,18 @@
   </view>
   <view class="storeList">我的预约</view>
   <view class="cardWrap">
-    <van-card num="2" tag="标签" price="2.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}">
-      <view slot="footer">
-        <van-button size="mini">按钮</van-button>
-        <van-button size="mini">按钮</van-button>
-      </view>
-    </van-card>
+    <block wx:for="{{orderList}}" wx:key="{{item.id}}">
+      <van-card  class="card" price="" desc="{{item.service_id.class}}专家" title="{{item.service_id.name}}" thumb="{{ item.service_id.img }}">
+        <view slot="tags">
+          <view>公司:{{item.service_id.store_id.name}}</view>
+          <view>地址:{{item.service_id.store_id.address}}</view>
+          <view>电话:{{item.service_id.store_id.telephone}}</view>
+          <view>预约时间:{{item.orderTime}}</view>
+        </view>
+        <view slot="footer">
+          <van-button class="button" bind:tap="cancel" data-id="{{item.id}}">取消预约</van-button>
+        </view>
+      </van-card>
+    </block>
   </view>
 </view>

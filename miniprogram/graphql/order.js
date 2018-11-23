@@ -114,8 +114,14 @@ getOrder=`query orderbyprops($remark: String, $updatedAt: String, $payTime: Stri
             serverStatus
             recommended
             price
-
             img
+            store_id {
+                id
+                address
+                name
+                describle
+                telephone
+          	}
         }
         orderTime
         storeTotalPay

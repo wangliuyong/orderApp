@@ -11,6 +11,18 @@
     font-size:30rpx;
     padding:80rpx 0rpx;
 }
+.cardWrap{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 3px 10px;
+}
+.card{
+    margin: 4px 0;
+    border: 1px solid transparent;
+}
+.button{
+    color :red;
+}
 .storeList{
     text-align: center;
     padding: 10px;
