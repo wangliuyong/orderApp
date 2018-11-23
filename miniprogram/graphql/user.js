@@ -48,6 +48,18 @@ getUser=`query userbyprops($openid: String, $username: String, $password: String
         createdAt
         updatedAt
     }
+}`,
+getUsrById=`query userbyid($id: ID) {
+    userbyid: user_by_id(id: $id) {
+        id
+        openid
+        username
+        password
+        telephone
+        email
+        createdAt
+        updatedAt
+    }
 }`
 
 
@@ -55,7 +67,8 @@ export default{
     createUser,
     deleteUser,
     updateUser,
-    getUser
+    getUser,
+    getUsrById
 }
 
 /*

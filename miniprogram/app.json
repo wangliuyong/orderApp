@@ -27,11 +27,6 @@
       "iconPath":"images/index_icon.png",
       "selectedIconPath":"images/index_icon_HL.png"
     }, {
-      "pagePath": "pages/technician/technician",
-      "text": "技师",
-      "iconPath":"images/skill_icon.png",
-      "selectedIconPath":"images/skill_icon_HL.png"
-    }, {
       "pagePath": "pages/user/user",
       "text": "我的",
       "iconPath":"images/user_icon.png",

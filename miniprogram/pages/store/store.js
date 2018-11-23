@@ -63,9 +63,11 @@ Page({
   },
   // 跳转至详情页
   toServiceDetail(e){
+
+    console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
-      url:'../detail/detail?artype=' + e.currentTarget.dataset.artype
-    })
+      url:'../book/book?service_id=' + e.currentTarget.dataset.id
+    }) 
   },
   //封装的函数
   getStoreByIds(data){

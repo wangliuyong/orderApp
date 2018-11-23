@@ -1,7 +1,6 @@
-let createOrder=`mutation createorder($remark: String, $server_id: String, $updatedAt: String, $payTime: String, $orderTotalPay: Float, $createdAt: String, $orderStatus: String, $id: ID!, $user_id: ID, $orderTime: String, $storeTotalPay: Float) {
-    createorder: create_order(remark: $remark server_id: $server_id updatedAt: $updatedAt payTime: $payTime orderTotalPay: $orderTotalPay createdAt: $createdAt orderStatus: $orderStatus id: $id user_id: $user_id orderTime: $orderTime storeTotalPay: $storeTotalPay) {
+let createOrder=`mutation createorder($remark: String, $updatedAt: String, $payTime: String, $orderTotalPay: Float, $createdAt: String, $orderStatus: String, $id: ID!, $user_id: ID, $service_id: ID, $orderTime: String, $storeTotalPay: Float) {
+    createorder: create_order(remark: $remark updatedAt: $updatedAt payTime: $payTime orderTotalPay: $orderTotalPay createdAt: $createdAt orderStatus: $orderStatus id: $id user_id: $user_id service_id: $service_id orderTime: $orderTime storeTotalPay: $storeTotalPay) {
         remark
-        server_id
         updatedAt
         payTime
         orderTotalPay
@@ -18,29 +17,33 @@ let createOrder=`mutation createorder($remark: String, $server_id: String, $upda
             createdAt
             updatedAt
         }
+        service_id {
+            updatedAt
+            orderPrice
+            number
+            timeRange
+            name
+            describle
+            createdAt
+            evaluation
+            id
+            class
+            serverStatus
+            recommended
+            price
+
+            img
+        }
         orderTime
         storeTotalPay
     }
 }`,
-deleteOrder=`mutation deleteorder($remark: String, $server_id: String, $updatedAt: String, $payTime: String, $orderTotalPay: Float, $createdAt: String, $orderStatus: String, $id: ID, $user_id: ID, $orderTime: String, $storeTotalPay: Float) {
-    deleteorder: delete_order(remark: $remark server_id: $server_id updatedAt: $updatedAt payTime: $payTime orderTotalPay: $orderTotalPay createdAt: $createdAt orderStatus: $orderStatus id: $id user_id: $user_id orderTime: $orderTime storeTotalPay: $storeTotalPay)
+deleteOrder=`mutation deleteorder($remark: String, $updatedAt: String, $payTime: String, $orderTotalPay: Float, $createdAt: String, $orderStatus: String, $id: ID, $user_id: ID, $service_id: ID, $orderTime: String, $storeTotalPay: Float) {
+    deleteorder: delete_order(remark: $remark updatedAt: $updatedAt payTime: $payTime orderTotalPay: $orderTotalPay createdAt: $createdAt orderStatus: $orderStatus id: $id user_id: $user_id service_id: $service_id orderTime: $orderTime storeTotalPay: $storeTotalPay)
 }`,
-updateOrder=`mutation updateuser($id: ID, $openid: String, $username: String, $password: String, $telephone: String, $email: String, $createdAt: String, $updatedAt: String) {
-    updateuser: update_user(id: $id openid: $openid username: $username password: $password telephone: $telephone email: $email createdAt: $createdAt updatedAt: $updatedAt) {
-        id
-        openid
-        username
-        password
-        telephone
-        email
-        createdAt
-        updatedAt
-    }
-}`,
-getOrder=`query orderbyprops($remark: String, $server_id: String, $updatedAt: String, $payTime: String, $orderTotalPay: Float, $createdAt: String, $orderStatus: String, $user_id: ID, $orderTime: String, $storeTotalPay: Float) {
-    orderbyprops: order_by_props(remark: $remark server_id: $server_id updatedAt: $updatedAt payTime: $payTime orderTotalPay: $orderTotalPay createdAt: $createdAt orderStatus: $orderStatus user_id: $user_id orderTime: $orderTime storeTotalPay: $storeTotalPay) {
+updateOrder=`mutation updateorder($remark: String, $updatedAt: String, $payTime: String, $orderTotalPay: Float, $createdAt: String, $orderStatus: String, $id: ID, $user_id: ID, $service_id: ID, $orderTime: String, $storeTotalPay: Float) {
+    updateorder: update_order(remark: $remark updatedAt: $updatedAt payTime: $payTime orderTotalPay: $orderTotalPay createdAt: $createdAt orderStatus: $orderStatus id: $id user_id: $user_id service_id: $service_id orderTime: $orderTime storeTotalPay: $storeTotalPay) {
         remark
-        server_id
         updatedAt
         payTime
         orderTotalPay
@@ -56,6 +59,63 @@ getOrder=`query orderbyprops($remark: String, $server_id: String, $updatedAt: St
             email
             createdAt
             updatedAt
+        }
+        service_id {
+            updatedAt
+            orderPrice
+            number
+            timeRange
+            name
+            describle
+            createdAt
+            evaluation
+            id
+            class
+            serverStatus
+            recommended
+            price
+
+            img
+        }
+        orderTime
+        storeTotalPay
+    }
+}`,
+getOrder=`query orderbyprops($remark: String, $updatedAt: String, $payTime: String, $orderTotalPay: Float, $createdAt: String, $orderStatus: String, $user_id: ID, $service_id: ID, $orderTime: String, $storeTotalPay: Float) {
+    orderbyprops: order_by_props(remark: $remark updatedAt: $updatedAt payTime: $payTime orderTotalPay: $orderTotalPay createdAt: $createdAt orderStatus: $orderStatus user_id: $user_id service_id: $service_id orderTime: $orderTime storeTotalPay: $storeTotalPay) {
+        remark
+        updatedAt
+        payTime
+        orderTotalPay
+        createdAt
+        orderStatus
+        id
+        user_id {
+            id
+            openid
+            username
+            password
+            telephone
+            email
+            createdAt
+            updatedAt
+        }
+        service_id {
+            updatedAt
+            orderPrice
+            number
+            timeRange
+            name
+            describle
+            createdAt
+            evaluation
+            id
+            class
+            serverStatus
+            recommended
+            price
+
+            img
         }
         orderTime
         storeTotalPay

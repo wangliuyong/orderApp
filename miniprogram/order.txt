@@ -147,7 +147,6 @@ query repertorybyid($id: ID) {
 query orderbyid($id: ID) {
     orderbyid: order_by_id(id: $id) {
         remark
-        server_id
         updatedAt
         payTime
         orderTotalPay
@@ -163,6 +162,23 @@ query orderbyid($id: ID) {
             email
             createdAt
             updatedAt
+        }
+        service_id {
+            updatedAt
+            orderPrice
+            number
+            timeRange
+            name
+            describle
+            createdAt
+            evaluation
+            id
+            class
+            serverStatus
+            recommended
+            price
+
+            img
         }
         orderTime
         storeTotalPay
@@ -239,10 +255,9 @@ query userbyprops($openid: String, $username: String, $password: String, $teleph
     }
 }
 
-query orderbyprops($remark: String, $server_id: String, $updatedAt: String, $payTime: String, $orderTotalPay: Float, $createdAt: String, $orderStatus: String, $user_id: ID, $orderTime: String, $storeTotalPay: Float) {
-    orderbyprops: order_by_props(remark: $remark server_id: $server_id updatedAt: $updatedAt payTime: $payTime orderTotalPay: $orderTotalPay createdAt: $createdAt orderStatus: $orderStatus user_id: $user_id orderTime: $orderTime storeTotalPay: $storeTotalPay) {
+query orderbyprops($remark: String, $updatedAt: String, $payTime: String, $orderTotalPay: Float, $createdAt: String, $orderStatus: String, $user_id: ID, $service_id: ID, $orderTime: String, $storeTotalPay: Float) {
+    orderbyprops: order_by_props(remark: $remark updatedAt: $updatedAt payTime: $payTime orderTotalPay: $orderTotalPay createdAt: $createdAt orderStatus: $orderStatus user_id: $user_id service_id: $service_id orderTime: $orderTime storeTotalPay: $storeTotalPay) {
         remark
-        server_id
         updatedAt
         payTime
         orderTotalPay
@@ -258,6 +273,23 @@ query orderbyprops($remark: String, $server_id: String, $updatedAt: String, $pay
             email
             createdAt
             updatedAt
+        }
+        service_id {
+            updatedAt
+            orderPrice
+            number
+            timeRange
+            name
+            describle
+            createdAt
+            evaluation
+            id
+            class
+            serverStatus
+            recommended
+            price
+
+            img
         }
         orderTime
         storeTotalPay
@@ -446,8 +478,8 @@ mutation createrepertory($id: ID!, $service_id: ID, $name: String, $count: Int) 
     }
 }
 
-mutation deleteorder($remark: String, $server_id: String, $updatedAt: String, $payTime: String, $orderTotalPay: Float, $createdAt: String, $orderStatus: String, $id: ID, $user_id: ID, $orderTime: String, $storeTotalPay: Float) {
-    deleteorder: delete_order(remark: $remark server_id: $server_id updatedAt: $updatedAt payTime: $payTime orderTotalPay: $orderTotalPay createdAt: $createdAt orderStatus: $orderStatus id: $id user_id: $user_id orderTime: $orderTime storeTotalPay: $storeTotalPay)
+mutation deleteorder($remark: String, $updatedAt: String, $payTime: String, $orderTotalPay: Float, $createdAt: String, $orderStatus: String, $id: ID, $user_id: ID, $service_id: ID, $orderTime: String, $storeTotalPay: Float) {
+    deleteorder: delete_order(remark: $remark updatedAt: $updatedAt payTime: $payTime orderTotalPay: $orderTotalPay createdAt: $createdAt orderStatus: $orderStatus id: $id user_id: $user_id service_id: $service_id orderTime: $orderTime storeTotalPay: $storeTotalPay)
 }
 
 mutation deleteadmin($id: ID, $openid: String, $username: String, $password: String, $telephone: String, $email: String, $createdAt: String, $updatedAt: String) {
@@ -458,10 +490,9 @@ mutation deleteuser($id: ID, $openid: String, $username: String, $password: Stri
     deleteuser: delete_user(id: $id openid: $openid username: $username password: $password telephone: $telephone email: $email createdAt: $createdAt updatedAt: $updatedAt)
 }
 
-mutation createorder($remark: String, $server_id: String, $updatedAt: String, $payTime: String, $orderTotalPay: Float, $createdAt: String, $orderStatus: String, $id: ID!, $user_id: ID, $orderTime: String, $storeTotalPay: Float) {
-    createorder: create_order(remark: $remark server_id: $server_id updatedAt: $updatedAt payTime: $payTime orderTotalPay: $orderTotalPay createdAt: $createdAt orderStatus: $orderStatus id: $id user_id: $user_id orderTime: $orderTime storeTotalPay: $storeTotalPay) {
+mutation createorder($remark: String, $updatedAt: String, $payTime: String, $orderTotalPay: Float, $createdAt: String, $orderStatus: String, $id: ID!, $user_id: ID, $service_id: ID, $orderTime: String, $storeTotalPay: Float) {
+    createorder: create_order(remark: $remark updatedAt: $updatedAt payTime: $payTime orderTotalPay: $orderTotalPay createdAt: $createdAt orderStatus: $orderStatus id: $id user_id: $user_id service_id: $service_id orderTime: $orderTime storeTotalPay: $storeTotalPay) {
         remark
-        server_id
         updatedAt
         payTime
         orderTotalPay
@@ -478,6 +509,23 @@ mutation createorder($remark: String, $server_id: String, $updatedAt: String, $p
             createdAt
             updatedAt
         }
+        service_id {
+            updatedAt
+            orderPrice
+            number
+            timeRange
+            name
+            describle
+            createdAt
+            evaluation
+            id
+            class
+            serverStatus
+            recommended
+            price
+
+            img
+        }
         orderTime
         storeTotalPay
     }
@@ -487,10 +535,9 @@ mutation deleterepertory($id: ID, $service_id: ID, $name: String, $count: Int) {
     deleterepertory: delete_repertory(id: $id service_id: $service_id name: $name count: $count)
 }
 
-mutation updateorder($remark: String, $server_id: String, $updatedAt: String, $payTime: String, $orderTotalPay: Float, $createdAt: String, $orderStatus: String, $id: ID, $user_id: ID, $orderTime: String, $storeTotalPay: Float) {
-    updateorder: update_order(remark: $remark server_id: $server_id updatedAt: $updatedAt payTime: $payTime orderTotalPay: $orderTotalPay createdAt: $createdAt orderStatus: $orderStatus id: $id user_id: $user_id orderTime: $orderTime storeTotalPay: $storeTotalPay) {
+mutation updateorder($remark: String, $updatedAt: String, $payTime: String, $orderTotalPay: Float, $createdAt: String, $orderStatus: String, $id: ID, $user_id: ID, $service_id: ID, $orderTime: String, $storeTotalPay: Float) {
+    updateorder: update_order(remark: $remark updatedAt: $updatedAt payTime: $payTime orderTotalPay: $orderTotalPay createdAt: $createdAt orderStatus: $orderStatus id: $id user_id: $user_id service_id: $service_id orderTime: $orderTime storeTotalPay: $storeTotalPay) {
         remark
-        server_id
         updatedAt
         payTime
         orderTotalPay
@@ -506,6 +553,23 @@ mutation updateorder($remark: String, $server_id: String, $updatedAt: String, $p
             email
             createdAt
             updatedAt
+        }
+        service_id {
+            updatedAt
+            orderPrice
+            number
+            timeRange
+            name
+            describle
+            createdAt
+            evaluation
+            id
+            class
+            serverStatus
+            recommended
+            price
+
+            img
         }
         orderTime
         storeTotalPay

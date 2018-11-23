@@ -9,7 +9,16 @@
     flex-direction: row;
     justify-content: center;
     font-size:30rpx;
-    margin:80rpx 0rpx;
+    padding:80rpx 0rpx;
+}
+.storeList{
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background:url("https://wly-1254337200.cos.ap-guangzhou.myqcloud.com/black_line.png") repeat;
+    width: 420px;
 }
 .user_base_info .user_avatar{
     width:200rpx;

@@ -1,3 +1,7 @@
 {
-    "navigationBarTitleText":"预定"
+    "navigationBarTitleText":"预定",
+    "usingComponents": {
+        "van-panel": "../../dist/panel/index",
+        "van-toast": "../../dist/toast/index"
+      }
 }

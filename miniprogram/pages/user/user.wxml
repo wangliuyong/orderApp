@@ -1,28 +1,20 @@
-<!--user.wxml-->
-
+<!-- user.wxml -->
 <view class="container">
-  <view class="user_base_info">
+  <view class="user_base_info" style="{{background}}">
     <view class="user_avatar">
-        <image src="{{userData.avatar}}"></image>
+      <image src="{{userInfo.avatarUrl}}"></image>
     </view>
     <view class="user_info">
-      <text>
-        昵称：{{userData.nickname}}
-        姓名：{{userData.name}}
-        电话：{{userData.phone}}
-      </text>
+      <text>{{userInfo.nickName}}</text>
     </view>
   </view>
-
- <view class="user_addr_manage">
-    <view class="user_addr_title">【地址管理】</view>
-    <block wx:for="{{addrDate}}" wx:key="item.id">
-      <view class="user_addr_item">
-          <text class="addr_sub">{{item}}</text>
-          <view class="addr_edit" bindtap="editAddr" data-addrid="{{index+1}}"></view>
-      </view> 
-    </block>
-    <navigator url="../edit_addr/edit_addr" >新增地址 +</navigator>
- </view>
-  
+  <view class="storeList">我的预约</view>
+  <view class="cardWrap">
+    <van-card num="2" tag="标签" price="2.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}">
+      <view slot="footer">
+        <van-button size="mini">按钮</van-button>
+        <van-button size="mini">按钮</van-button>
+      </view>
+    </van-card>
+  </view>
 </view>

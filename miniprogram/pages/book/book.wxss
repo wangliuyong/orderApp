@@ -30,7 +30,7 @@
     padding:20rpx 60rpx;
     font-size:30rpx;
     background: #fff;
-    margin-bottom:40rpx;
+    margin-top:130rpx;
     line-height: 45rpx;
     color:#666666;
 }
